@@ -22,6 +22,117 @@
       <label>비밀번호: <input type="password" id="user_pw" size="10"></label>
       <input type="submit" value="로그인">
     </fieldset>
+     <fieldset>
+     	1.생략<input autofocus><br>
+     	2.text<input type="text" placeholder="이름을입력하세요."><br>
+     	3.hidden<input type="hidden"><br>
+     	4.password<input type="password"><br>
+     	5.email<input type="email" value="wde0112@fdffd.com" readonly="readonly"><br>
+     	6.tel<input type="tel" pattern="010-[0-9]{4}-[0-9]{4}" 
+     		placeholder="placeholder"
+     		required="required"><br>
+     	7.url<input type="url"><br>
+     	8.search<input type="search"><br>
+     	9.number<input type="number" min="1" max="10" value="5"><br>
+     	10.range<input type="range" min="1" max="10" value="5"><br>
+     	11.radio
+     		남자 <input type="radio" value="M" name="gender" checked="checked">
+     		여자 <input type="radio" value="F" name="gender">
+     		<br>
+     		전공
+     		컴공<input type ="radio" value="A" name="major">
+     		기계<input type ="radio" value="A" name="major" checked="checked">
+     		생명<input type ="radio" value="A" name="major">
+     	<br>
+     	12.checkbox(서로독립적)...여러개선택가능<br>
+     	<!-- id는 front에서 사용한다. -->
+     	<label for="zza">짜장면 </label>
+     	<input id="zza" type= "checkbox" value="짜장면" name="lunch">
+     	<label>
+     		순대국<input type= "checkbox" value="F" name="lunch">
+     	</label>
+     	
+     	김밥<input type= "checkbox" value="G" name="lunch">
+     	<br>
+     	13.<input type= "color"><br>
+     	14.date<input type= "date"><br>
+     	14.datetime<input type= "datetime"><br>
+     	14.datetime-local<input type= "datetime-local"><br>
+     	14.month<input type= "month"><br>
+     	14.week<input type= "week"><br>
+     	15.reset<input type= "reset" value="초기화하기"><br>
+     	16.image(submit+이미지)<input type= "image" src="image/login.jpg"><br>
+     	17.선택(single, multiple)<br>
+     	<select> 
+	     	<option> 짜장면 </option>
+	     	<option> 짬뽕 </option>
+	     	<option> 라면 </option>
+	     	<option> 스시 </option>
+	     	<option> 삼겹살 </option>
+     	</select>
+     	<select multiple="multiple" name="lunch2"> 
+	     	<option value = "zza"> 짜장면 </option>
+	     	<option value = "짬뽕"> 짬뽕 </option>
+	     	<option> 라면 </option>
+	     	<option selected="selected"> 스시 </option>
+	     	<option selected> 삼겹살 </option>
+     	</select>
+     	16. datalist
+     	<span class="reg">관심분야</span>
+					<label for="interest"></label>
+					<input type="text" id="interest" list="choices">
+					<datalist id="choices">
+						<option value="grammar" label="문법"></option>
+						<option value="voca" label="어휘"></option>
+						<option value="speaking" label="회화"></option>
+						<option value="listening" label="리스닝"></option>
+						<option value="news" label="뉴스청취"></option>
+					</datalist>
+     	<br>
+     	17. textarea
+     	<textarea rows= "10" cols="100"></textarea>
+     	<br>
+     	18. 버튼
+     	<input type = "button" value="input버튼">
+     	<input type = "image" src="images/login.jpg">
+     	<input type = "submit" value="서버로전송">
+     	<input type = "reset" value="초기화">
+     	<button> 버튼2...submit</button>
+     	<br>    	
+     	
+     	20. progress
+     	<progress value="30" max="100"></progress>
+     </fieldset>
+    
+    <form>
+    <h2>form새로만듬</h2>
+	<form oninput="result.value=parseInt(num1.value) + parseInt(num2.value)">
+    
+    <br>
+     	19.output
+     	<input type="number" name="num1" value="10">
+     	<input type="number" name="num2" value="20">
+     	<output name="result"></output>
+ 
+    </form>
+    
+    <button>Form밖에 있는 button</button>
+    <button onclick="call()"> javascript연습</button>
+    <script>
+    function call(){
+    	var a = document.getElementById("zza");
+    	alert(a.value);
+    }
+    
+    </script>
+    
+    </form>
+    
+    
+    
+    
+    
+    
   </form>
   </body>
 </html>
