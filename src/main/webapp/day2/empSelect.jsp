@@ -15,12 +15,49 @@ List<EmpVO> emplist = eService.selectAll();
 <!DOCTYPE html>
 <html>
 <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
+<style>
+/*
+	#container { 
+        width:900px;  
+        padding:15px;  
+        border:1px dotted gray;  
+      }
+	@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+	h1{
+		font-family: 'Jeju Gothic', sans-serif;
+		border: 2px solid black; 
+  		padding: 10px; 
+  		margin: 10px; 
+	}
+	.align-left {text-align:left;}
+	th{
+	
+		font-family: 'Jeju Gothic', sans-serif;
+	}
+	.align- {text-align:left;}
+	tr:hover{
+		background-color: pink;
+	}
+	.align-center {text-align:center;}
+	div{
+      	background-color: lightgreen;
+      }*/
+</style>
+
 <title>Insert title here</title>
 </head>
 <body>
+	<div id="container">    
 	<h1>직원목록</h1>
-	<table>
+	<button 
+	onclick="lacation.href='emp_insert.html'"
+	type="button" class="btn btn-success">직원등록</button>
+	<a type="button" class="btn btn-success" href="e"></a>
+	<table class="table table-hover">
 	<thead>
 	<tr>
 		<th>직원번호</th>
@@ -38,7 +75,7 @@ List<EmpVO> emplist = eService.selectAll();
 	</thead>
 	<tbody>
 	<% for(EmpVO emp:emplist){%>
-	<tr>
+	<tr class="align-center">
 		<td><%=emp.getEmployee_id() %></td>
 		<td><%=emp.getFirst_name() %></td>
 		<td><%=emp.getLast_name() %></td>
@@ -58,6 +95,6 @@ List<EmpVO> emplist = eService.selectAll();
 	</tbody>
 	
 	</table>
-
+</div>
 </body>
 </html>

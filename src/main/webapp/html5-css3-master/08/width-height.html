@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>박스모델</title>
+	<style>
+		.box1{
+			width:400px; /* 고정 너비 */
+			height:100px; /* 높이 */
+			background:#ff6a00; /* 배경색 */
+		}
+		.box2{
+			width:50%; /* 가변 너비 - 브라우저 창 너비의 50% */
+			height:100px; /* 높이 */
+			background:#0094ff; /* 배경색 */
+		}
+		div {
+			margin:10px; /* div 간의 여백 */
+		}
+		.box3{
+			background-color: green;
+			border:5px solid red;
+			padding : 10px;
+			width:300px;
+			box-sizing: border-box;
+			/*width = content + border *2 + padding *2 */
+		}
+		.box4{
+			background-color: yellow;
+			border:5px solid red;
+			padding : 10px;
+			width:300px;
+			box-sizing: content-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3">AA</div>
+	<div class="box4">BB</div>
+</body>
+</html>
