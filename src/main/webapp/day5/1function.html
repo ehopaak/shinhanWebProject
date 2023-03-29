@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h1{background-color: orange;}
+
+</style>
+<script>
+	console.log("head에 internal javascript작성");
+</script>
+<script>
+	score=100;	//global
+	var score2=200;
+	let score3=300;
+	const score4=400;
+	function call(){
+		a=10;	//이부분을 수행하면 global변수가된다.
+		var b=20;	//local
+		let c=30;	//{}안에서 유효
+		{let d=40;}
+		//document.getElementById("here")
+		here.innerHTML = a+b+c;	//not defined 오류
+	}
+	window.onload = function(){
+		//alert('load됨');
+		document.getElementById("btn2").onclick = function (){};
+		here.innerHTML = "버튼누름";
+		
+		//number, string, boolean, undefined, function, object
+		//123,"",'',``,true,false,선언되었지만 할당안함
+		//function(){}, {}, 배열[], typeof()
+		var age = prompt("나이를 입력하세요",20);
+		here.innerHTML = age + "데이터타입:" + typeof(age);
+		var name;
+		here.innerHTML = name + ":" + typeof(name);
+	};
+	
+	
+</script>
+
+</head>
+
+<body>
+	<h1>JavaScript function문법들</h1>
+	<hr>
+	<button onclick="call()">변수복습(inline방식)</button>
+	<button id="btn2" >데이터타입</button>
+	<button id="btn3" >선언적함수(이름있음)</button>
+	<button id="btn4" >익명함수(이름없음)</button>
+	<div id="here">여기</div>
+	<img alt="" src="../html5-css3-master/16/images/food.jpg">
+	
+	<script>
+	btn3.onclick = f3;
+	btn4.onclick = function(){
+		here.innerHTML += "이름이 없는 익명함수이다."
+		f3();
+		
+		(function(){
+			alert("익명");
+		}) (); //정의하고 실행함
+		
+		var a = function(){alert("익명2"); };
+		a();
+		a();
+		
+	};	//익명함수 = 이름이 없어서 한번만 사용
+	
+	function f3() {
+		here.innerHTML += "이름이 있는 선언적함수이다."
+		
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = init;
+	function init(){
+		document.getElementById("btn1").onclick = call;
+		document.getElementById("btn2").onclick = call2;
+		document.getElementById("btn3").onclick = call3;
+		document.getElementById("btn4").onclick = call4;
+		document.getElementById("btn5").onclick = call5;
+		document.getElementById("btnCompute").onclick = compute;
+		document.getElementById("btn6").onclick = function(){
+			//callA(1);
+			//callB(10);
+			callC(100,200,300);
+		}
+		document.getElementById("btn7").onclick = function(){
+			test1();
+			test2();
+		}
+		document.getElementById("btn8").onclick = function(){
+			method5();
+		}
+	}
+	
+	function method1(){
+	     document.getElementById("here").innerHTML += "<br>" + 	
+	     arguments[0]+arguments[1]+arguments[2];
+	}
+	function method2(a,b,c){
+	     document.getElementById("here").innerHTML += "<br>" +a+b+c;
+	}
+	function method3(...nums){
+	     document.getElementById("here").innerHTML += "<br>" +	nums[0]+nums[1]+nums[2];
+	}
+	function method4(a,b,c,d){
+	     document.getElementById("here").innerHTML += "<br>" + a+b+c+d;
+	}
+	function method5(){
+	     arr=[1,2];
+	     method1(10,20,30)
+	     method2(10,20,30)
+	     method3(10,20,30)
+	     method4(...arr, ...arr);
+	     method4(10,20, ...arr);
+	}
+
+	
+	
+	function test1() {
+		f= function(a,b) {return a+b;}
+		f2= function() {alert("arrow함수...parameter없고 return없음");};
+		f3= function(x) {alert(x + "arrow함수...parameter있고 return없음");};
+		f4= function(x) {
+			alert(x + "arrow함수...parameter있고 return없음");
+			return x + "return있음";	
+		};
+		f2();
+		f3(99);
+		f4(88);
+		document.getElementById("here").innerHTML = f(10,20);
+	}
+	function test2() {
+		f = (a,b) => a+b;
+		f2 = ()=> alert("arrow함수...parameter있고 return없음");
+		f3= (x)=> {alert(x + "arrow함수...parameter있고 return없음");};
+		f4= (x)=> {
+			alert(x + "arrow함수...parameter있고 return없음");
+			return x + "return있음";	
+		};
+		f2();
+		f3(77);
+		f4(66);
+		document.getElementById("here").innerHTML += "<br>" + f(100,200);
+	}
+	
+	
+	function callA(a,b,c) {
+		if(!b) b=200;
+		if(!c) c=300;
+		document.getElementById("here").innerHTML = a+b+c;
+	}
+	function callB(a,b,c) {
+		b = b || 201;
+		c = c || 301;
+		document.getElementById("here").innerHTML = a+b+c;
+	}
+	function callC(a,b=202,c=303) {
+		document.getElementById("here").innerHTML = a+b+c;
+	}
+
+	
+	
+	function compute() {
+		//DOM (Document Object Model)
+		var a = document.getElementById("num1").value;
+		var b = document.getElementById("num2").value;
+		var c = document.getElementById("op").value;
+		document.getElementById("result").value = eval(a + op + b);
+		
+		//if(op=="+") {}
+		
+	}
+	
+	function call() {
+		var arr = ["blue","orange","purple","skyblue","lightgreen"];
+		//일반적인for, for in, for of
+		//forEach..자바의 stream
+		//callback함수...정의는 내가하고 호출은 받은쪽에서 부른다.
+		arr.forEach(function(item, seq, obj){
+			console.log(item,seq,obj)
+			
+		});
+		
+		arr.forEach(function(aa, seq){
+			console.log(seq)
+			
+		});
+	}
+	function call2() {
+		  var arr = new Array("red","green","blue","pink", "yellow");
+		  intervalId = setInterval(backgroundChange(), 1000);
+		  function backgroundChange(){
+		        //난수 발생
+		         var nansu = Math.floor(Math.random()*arr.length);
+		         document.bgColor = arr[nansu] ;
+			}
+	}
+	function call3() {
+		clearInterval(intervalId);
+	}
+	function call4() {
+		var uri = "http://localhost:9999/shinhanWebProject/a.jsp?name=진&address=";
+		encodeURIComponent(uri);
+	}
+	function call5() {
+		var s = "a=10;b=20;c=a+b;alert(c);"
+		eval(s);
+	}
+</script>
+</head>
+<body>
+<h1>function</h1>
+<button id="btn1">ECMAScript6-looping</button>
+<button id="btn2">1초마다 배경색 바꾸기</button>
+<button id="btn3">중지</button>
+<button id="btn4">Encoding</button>
+<button id="btn5">eval</button>
+<button id="btn6">default매개변수</button>
+<hr>
+
+<div class="compute">
+	<input id="num1" type="number" value="10">
+	<select id="op">
+		<option>+</option>
+		<option>-</option>
+		<option>*</option>
+		<option>/</option>
+		<option>%</option>
+	</select>
+		<input id="num2" type="number" value="20">
+		<button id="btnCompute">=</button>
+		<input id="result" value="">
+</div>
+
+
+<button id="btn7">화살표함수</button>
+<button id="btn8">전개연산자</button>
+<button id="btn9"></button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

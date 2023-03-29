@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//지역변수는 지역을 떠나면 사라진다.
+//클로저를 사용하면 규칙위반 가능하다.
+//
+function closerTest(b){
+	var a =100;
+	return function(){
+		var c = 200;
+		return a+b+c+1000;
+	};
+}
+
+function add(start) {
+	var count = start;
+	return function(){
+		count++; return count;
+	}
+};
+
+
+//정의는 내가하고 호출은 받은쪽에서 한다. (callback)
+	window.onload = function() {
+	
+		btn11.onclick = function() {
+			var score = [100,99,50,88];
+			score.forEach(function(elt,index,arr){
+				here.innerHTML += "<br>" + index + "번째" + elt;
+			}); //()=>{}
+				
+		};
+		
+	
+	
+	
+	function call3(){
+			for(let i=0;i<3;i++){
+				setTimeout(function(){
+					alert(i);
+				},0);
+			}
+		}
+		btn9.onclick = call;
+	
+		function call(){
+			for(var i=0;i<3;i++){
+				setTimeout(function(){
+					alert(i);
+				},0);
+			}
+		}
+		btn8.onclick = call;
+	
+		var f1 = add(0);
+		var f2 = add(100);
+		btn7.onclick = function() {
+			here.innerHTML = f2();
+		}
+		
+		btn6.onclick = function() {
+			here.innerHTML = f1();
+		};
+	
+		btn5.onclick = function() {
+			var f = closerTest(300);
+			here.innerHTML = f();
+		};
+	
+		btn4.onclick = function() {
+			clearInterval(timer);
+		};
+	
+		btn3.onclick = function() {
+			timer = setInterval(function(){here.innerHTML = new Date();},1000);
+		};
+	
+		btn2.onclick = function() {
+			call(function(){alert("익명함수입니다.")});
+		};
+	
+		btn1.onclick = function() {
+			for(var prop in window){
+				here.innerHTML += "<br>" + prop + "==>" + window[prop];
+			}
+	};
+	
+};
+
+function call(f) {
+	f();
+}
+
+</script>
+</head>
+<body>
+<h1>Function / BOM</h1>
+<button id="btn1">window객체</button>
+<button id="btn2">callback함수</button>
+<button id="btn3">timer시작</button>
+<button id="btn4">timer종료</button>
+<button id="btn5">closer</button>
+<button id="btn6">closer(증가-0)</button>
+<button id="btn7">closer(증가-100)</button>
+<button id="btn8">closer(var)</button>
+<button id="btn9">closer(let)</button>
+<button id="btn11">closer(자동)</button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

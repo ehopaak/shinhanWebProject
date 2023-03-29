@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function(){
+		btn1.onclick = call1;
+		btn2.onclick = call2;
+		btn3.onclick = call3;
+		btn4.onclick = call4;
+		btn5.onclick = call5;
+		btn6.onclick = call6;
+		btn7.onclick = call7;
+		btn8.onclick = call8;
+		btn9.onclick = call9;
+		btn10.onclick = call10;
+		
+	}
+	var emp = {empid:100, 
+			"first main":"스티븐", 
+			salary:20000,
+			score:[100,99,88],
+			work:function(){alert("열심히일하기");},
+			eat: function(food){display.innerHTML += "<br>" + this["first name"] + food + "를먹음/..급여" + this.salary;}
+			};
+	function call1(){
+		
+		display.innerHTML = emp.empid;
+		display.innerHTML += emp["first main"];
+		display.innerHTML += emp["salary"];
+		display.innerHTML += "salary" in emp;
+		display.innerHTML += "salary2" in emp;
+	}
+	function call2(){
+		for(var prop in emp){
+			display.innerHTML += "<br>" + prop + "==>" + emp[prop];
+		}
+		
+	}
+	function call3(){
+		for(var prop in window){
+			display.innerHTML += "<br>" + prop + "==>" + window[prop];
+		}
+	}
+	function call4(){
+		emp.eat("햄버거");
+		window.alert("alert함수사용하기"); //window.은 생략가능
+	}
+	function call5(){
+		var arr = [100,99,88];
+		for(var prop in arr){	//배열이면 index, object이면 속성
+			display.innerHTML += "<br>" + index + "==>" + arr[prop];
+		}
+		
+	}
+	function call6(){
+		var student = {student_id : 100};
+		student.age = 40;
+		student.취미 = prompt("취미는?","등산");
+		
+		delete student.age;
+		
+		for(var prop in student){
+			display.innerHTML += "<br>" + prop + "==>" + student[prop];
+		}
+	}
+	function call7(){}
+	function call8(){}
+	function call9(){}
+	function call10(){}
+	
+	
+</script>
+</head>
+<body>
+<h1>JS Object</h1>
+<button id ="btn1">Object선언,참조(직접)</button>
+<button id ="btn2">Object선언,참조(반복문)</button>
+<button id ="btn3">window object</button>
+<button id ="btn4">Object의 함수속성호출</button>
+<button id ="btn5">Object선언,참조</button>
+<button id ="btn6">Object선언,참조</button>
+<button id ="btn7">Object선언,참조</button>
+<button id ="btn8">Object선언,참조</button>
+<button id ="btn9">Object선언,참조</button>
+<button id ="btn10">Object선언,참조</button>
+<hr>
+<div id="display">여기</div>
+</body>
+</html>

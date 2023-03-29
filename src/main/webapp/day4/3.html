@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+
+	a=100;	//실행시 a가 선언되고 값이할당된다.
+	var b=300; // (global)
+	
+	//변수를 선언하였지만 값이 초기화되지는 않음 undefined
+	console.log(c);		//호이스팅(var로 선언된 변수를 가장위로 올린다.)
+	function call(){
+		a2=200;	//실행시 a가 선언되고 값이할당된다.
+		var b2=400; // (local)
+	
+	}
+	function call2(){
+		document.querySelector("#here").innerHTML = 
+			a + a2 + b + c;
+	}
+	var c = 1000;//(global)
+	console.log(c);
+	function calle(){
+		const pi=3.14;
+		//상수는 변경불가pi = 3.141592;
+		
+		document.querySelector("#here").innerHTML = 
+			pi ;
+		var score=100;
+		document.querySelector("#here").innerHTML += 
+			"<br> 점수는" + score;
+		var str="<ul>";
+		for(let i=1;i<=10;i++){
+			//ECMAScript6지원 백틱: str += `<li> 숫자는 ${i} </li>`;
+			str += `<li> 숫자는 ${i} </li>`
+			
+		}
+		//let는 block{}에서만 유효
+		//global이거나 var이면 접근가능 str += "<li> !!!숫자는" + i + "</li>"
+		str +="<li>!!! 숫자는" + i + "</li>"
+		str += "</ul>"
+			document.querySelector("#here").innerHTML += str;
+	}
+</script>
+</head>
+<body>
+<h1>JavaScript문법</h1>
+<button onclick="call()">변수선언</button>
+<button onclick="call2()">변수선언2</button>
+<button onclick="call3()">var,let,const</button>
+<hr>
+<div id = "here">여기</div>
+</body>
+</html>

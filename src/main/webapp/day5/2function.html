@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script>
+	console.log("1.js");
+	window.onload = f1;		//f1함수이름을 load후에 수행하라는 의미
+	
+	function call(ff){
+		ff();
+		ff();
+	}
+	
+	function f1(){
+	here.innerHTML = 'JS에서 접근!!!';
+	
+	btn7.onclick = function(){
+		clearInterval(timer);
+		
+	};
+	
+	//callback : 행위는 내가 결정, 시점은 받은쪽에서 결정
+	btn6.onclick = function(){
+		
+		timer = setInterval(function(){
+			here.innerHTML = new Date();
+		},1000);
+		
+	};
+	
+	btn5.onclick = function(){
+		
+		var myFunction = function(){
+			here.innerHTML += "<p>JS배우기</p>";
+		};
+		call(myFunction);
+	};
+	
+	
+	
+	btn4.onclick = function(){
+		var alert = 100;
+		delete alert;
+		alert("메세지띄우기");
+		//alert(alert);
+	};
+	
+	btn3.onclick = function(){
+		here.innerHTML = sumAll(1,2,3,4,5,6,7,8,9,10);
+		
+		//함수이름이 충돌되면 나중것이 수행된다.
+		//반드시 수행해야하는 함수를 내부함수로 만들수있다.
+		//내부함수
+		function sumAll(){
+			//내장변수 arguments
+			var total =0;
+			for(let i=0;i<arguments.length;i++ ){
+				total += arguments[i];
+			}
+			return total;
+		}
+	};
+	
+	btn2.onclick = function(){
+		var a = Array();
+		var b = Array(5);
+		var c = Array(100,200,300);
+		here.innerHTML = a.length;
+		here.innerHTML += "<br>" + b.length;
+		here.innerHTML += "<br>" + c;
+	};
+	
+	btn1.onclick = function(){
+		here.innerHTML = sum(10,20,30); //남는경우 
+		here.innerHTML += "<br>" + sum(10);		//모자른경우
+		};
+	};
+	
+	function sumAll(){
+		//내장변수 arguments
+		var total =999;
+		return total;
+	}
+	
+	function sum(a, b){
+		return a+b;
+	}
+	</script>
+	
+<script></script>
+</head>
+<body>
+
+<script>
+console.log("2.js");
+</script>
+
+<h1>JS function</h1>
+<hr>
+<button id = "btn1">함수의 매개변수</button>
+<button id = "btn2">Array</button>
+<button id = "btn3">Arguments..내부함수연습</button>
+<button id = "btn4">이름충돌</button>
+<button id = "btn5">callback함수</button>
+<button id = "btn6">callback함수(timer시작)</button>
+<button id = "btn7">timer중지</button>
+
+<hr>
+<div id="here">여기</div>
+<script>
+console.log("3.js");
+//here.innerHTML = "JS에서 접근";
+</script>
+</body>
+</html>
