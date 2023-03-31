@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "https://cdn.jsdelivr.net/npm/underscore@latest/underscore-umd-min.js">
+
+</script>
+<script>
+ window.onload = function(){
+	 here.innerHTML = "<h1>load끝</h1>"
+	 btn1.onclick = call;
+	 btn2.onclick = call2;
+	 btn3.onclick = call3;
+	 btn4.onclick = call4;
+	 btn5.onclick = call5;
+	 btn6.onclick = call6;
+	 
+ };
+
+function call(){
+	var str ="";
+	for(let prop in window){
+		str += "<br>" + prop + "--->" + window[prop];
+	}
+	here.innerHTML = str;
+}
+	 
+function call2(){
+	var str ="";
+	for(let prop in document){
+		str += "<br>" + prop + "--->" + document[prop];
+	}
+	here.innerHTML = str;
+}
+
+function call3(){
+	var str ="";
+	for(let prop in location){
+		str += "<br>" + prop + "--->" + location[prop];
+	}
+	here.innerHTML = str;
+}
+function call4(){
+	var str ="";
+	for(let prop in navigator){
+		str += "<br>" + prop + "--->" + navigator[prop];
+	}
+	here.innerHTML = str;
+}
+function call5(){
+	var str ="";
+	for(let prop in history){
+		str += "<br>" + prop + "--->" + history[prop];
+	}
+	here.innerHTML = str;
+}
+function call6(){
+	var str ="";
+	for(let prop in screen){
+		str += "<br>" + prop + "--->" + screen[prop];
+	}
+	here.innerHTML = str;
+}
+function call7(){
+	
+};
+function call8(){
+	
+}
+function call9(){
+	
+}
+function call10(){}
+
+</script>
+</head>
+
+<body>
+<h1>BOM(Browser Object Model)에 대하여~~</h1>
+<button id="btn1">window</button>
+<button id="btn2">document</button>
+<button id="btn3">location</button>
+<button id="btn4">navigator</button>
+<button id="btn5">history</button>
+<button id="btn6">screen</button>
+<button id="btn7" onclick="location.href='../day2/empSelect.jsp'">직원조회 페이지 이동</button>
+<button id="btn8" onclick="location.href='../day2/empSelect.jsp'">직원조회 페이지 이동</button>
+<a href="../day2/empSelect.jsp">직원조회 페이지이동</a>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

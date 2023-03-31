@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div, p {border : 1px solid gray; padding: 10px;}
+</style>
+<script>
+//이벤트와 이벤트리스너를 연결
+window.addEventListener('load',init);
+
+ function init(){
+	 //오류
+	 /* btn1.attachEvent("onclick", function(){
+		 alert(this.innerHTML);
+	 }); */
+	 
+	 //표준
+	 btn2.addEventListner("onclick", function(){
+		 alert(this.innerHTML);
+	 });
+	 
+	 document.querySelector("#myp").onclick = function(e){
+		 alert('p 누름');
+		 e.cancelBubble = true;
+		 e.stopPropagation(); //이벤트전달막기
+	 }
+	 var nodelist = document.querySelectorAll("div");
+	 
+ }
+</script>
+</head>
+<body>
+<h1>JS Event에 대하여</h1>
+
+<button id="btn1">IE 이벤트모델</button>
+<button id="btn2">표준 이벤트모델</button>
+
+<div onclick="alert('outer div')">AA
+	<div onclick="alert('inner div')">BB
+	<p id="myp">p태그입니다.</p>
+	<input type="text" onchange="alert('onchange')" >
+	</div>
+
+</div>
+</body>
+</html>

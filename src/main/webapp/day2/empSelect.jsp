@@ -18,11 +18,32 @@ List<EmpVO> emplist = eService.selectAll();
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  
 <meta charset="UTF-8">
+<script>
+
+$(function(){
+	$("#btn1").click(function() {
+		$("tr:nth-child(2n)").css("background-color","green");
+    });
+	$("#btn2").click(function() {
+		$("tr > td:nth-child(2):contains(S)").css("background-color","green");
+    });
+	$("#btn3").click(function() {
+		
+	var arr =	$("tr > td:nth-child(5)").css("background-color","lightblue");
+    });
+	
+});
+
+#container > table > tbody > tr:nth-child(1) > td:nth-child(5)
+
+</script>
 <style>
-/*
+
 	#container { 
-        width:900px;  
+        width:1200px;  
         padding:15px;  
         border:1px dotted gray;  
       }
@@ -45,7 +66,7 @@ List<EmpVO> emplist = eService.selectAll();
 	.align-center {text-align:center;}
 	div{
       	background-color: lightgreen;
-      }*/
+      }
 </style>
 
 <title>Insert title here</title>
@@ -57,9 +78,17 @@ List<EmpVO> emplist = eService.selectAll();
 	onclick="lacation.href='emp_insert.html'"
 	type="button" class="btn btn-success">직원등록</button>
 	<a type="button" class="btn btn-success" href="e"></a>
+	<hr>
+	<button id="btn1">짝수row선택</button>
+	<button id="btn2">이름 S로 시작하는 직원</button>
+	<button id="btn3">급여가 10000 이상인 직원</button>
+	
+	
+	
+	
 	<table class="table table-hover">
 	<thead>
-	<tr>
+	<tr class= "align-center" style="background-color:powderblue;">
 		<th>직원번호</th>
 		<th>이름</th>
 		<th>성</th>
@@ -87,8 +116,6 @@ List<EmpVO> emplist = eService.selectAll();
 		<td><%=emp.getManager_id() %></td>
 		<td><%=emp.getCommission_pct() %></td>
 		<td><%=emp.getDepartment_id() %></td>
-	
-	
 	</tr>
 	<%} %>
 	

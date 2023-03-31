@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "https://cdn.jsdelivr.net/npm/underscore@latest/underscore-umd-min.js">
+
+</script>
+<script>
+ window.onload = function(){
+	 here.innerHTML = "<h1>load끝</h1>"
+	 btn1.onclick = call;
+	 btn2.onclick = call2;
+	 btn3.onclick = call3;
+	 btn4.onclick = call4;
+	 btn5.onclick = call5;
+	 btn6.onclick = call6;
+	 btn7.onclick = call7;
+	 btn8.onclick = call8;
+	 btn9.onclick = call9;
+	 btn10.onclick = call10;
+	 
+	 function test(){}
+	 
+ };
+
+ function call(){
+	 var a = 10; //기본형
+	 var b = new Number(10); //객체
+	 console.log(a, typeof(a));
+	 console.log(b, typeof(b));
+	 console.log(a+b);
+	 //Number는 내장객체...공유영역에 함수추가가능
+	 Number.prototype.myFunction = function(){alert("함수추가");};
+	 b.myFunction2 = function(){alert("함수추가2");}; //OK
+	 a.myFunction2 = function(){alert("함수추가2");}; //불가
+	 a.myFunction(); //OK
+	 b.myFunction(); //OK
+	 a.myFunction2();
+	 b.myFunction2(); //Error
+	 };
+	 
+	 function call2(){
+		 var arr = [100,50,70,200];
+		 arr.push(300);
+		 var str="";
+		 arr.sort(function(a,b){return a-b;}); //문자 sort
+		 arr.forEach((item, index)=>{
+		 str += `<p>${index}번째 ${item}</p>`;
+		 });
+		 here.innerHTML = str;
+		 }
+
+function Student(name, age, java, sql, jdbc) {
+	this.name = name;
+	this.age = age;
+	this.java = java;
+	this.sql = sql;
+	this.jdbc = jdbc;
+}
+
+
+function call3(){
+	var arr = [];
+	arr.push(new Student("배동렬5", 50, 100, 99, 88));
+	arr.push(new Student("배동렬2", 48, 68, 79, 58));
+	arr.push(new Student("배동렬4", 49, 79, 86, 47));
+	arr.push(new Student("배동렬3", 46, 97, 75, 86));
+	arr.push(new Student("배동렬1", 45, 69, 78, 84));
+	
+	Student.prototype.getSum = function(){
+		return this.java + this.sql + this.jdbc;
+	};
+	Student.prototype.getAvg = function(){
+		return (this.getSum()/3).toFixed(1);
+	};
+	
+	Student.prototype.toString = function() {
+		return `이름은 ${this.name}.. 나이는 ${this.age}.. 총점은 ${this.getSum()}.. 평균은 ${this.getAvg()}..`;
+	};
+	
+	arr.sort((a,b)=>b.getSum() - a.getSum());
+	
+	//이름순으로 Sort하기
+	/*arr.sort((a,b)=>{
+		if(a==b) return 0;
+		if(a>b) return 1;
+		return -1;
+	});*/
+	
+	arr = arr.slice(0,2);
+	
+	for(var index in arr){
+		here.innerHTML += `<p>${arr[index]}</p>`;
+	}
+	
+}
+function call4(){
+	//배열을 문자열로 만들기
+	var arr = [100,50,70,200];
+	here.innerHTML = arr.join("****");
+}
+function call5(){
+	var arr = [100,50,70,200];
+	var result = arr.map((item)=>item/10);
+	here.innerHTML = result.join("****");
+}
+function call6(){
+	var arr = [6,2,7,3,8,1,9,10];
+	var result = arr.filter((item)=>item%3==0);
+	here.innerHTML = result.join("*****");
+};
+function call7(){
+	var arr = [6,2,7,3,8,1,9,10];
+	var result = arr.reduce((before, current)=>{
+	here.innerHTML += `<p>${before}-----${current}</p>`;
+	return before+current;
+	});
+	here.innerHTML += result;
+};
+function call8(){
+	var obj = {};
+	obj.name = "경윤";
+	obj.age = 25;
+	obj.adress = "홍대";
+	let jsonStr = JSON.stringify(obj);
+	console.log(obj, typeof(obj));
+	console.log(jsonStr, typeof(jsonStr));
+	console.log(obj.name);
+	console.log(jsonStr.name); //undefined
+	//JavaScript에서 서버로 전송하기 위해 json으로 변경한다.
+	//*------------------------------------------//
+	//서버에서 json으로 보내면 자바스크립트 객체로 변경한다.
+	var obj2 = JSON.parse(jsonStr);
+	console.log(obj2.name);
+}
+function call9(){
+	var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+	_.sortBy(stooges, 'name');
+	for(var index in stooges){
+		here.innerHTML += `<p>${stooges[index].name}--------${stooges[index].age}</p>`;
+	}
+}
+function call10(){}
+
+</script>
+</head>
+
+<body>
+<h1>JS Object에 대하여~~</h1>
+<button id="btn1">Number객체</button>
+<button id="btn2">Array객체</button>
+<button id="btn3">Array Sort</button>
+<button id="btn4">Array Join</button>
+<button id="btn5">map함수</button>
+<button id="btn6">filter함수</button>
+<button id="btn7">reduce함수</button>
+<button id="btn8">JSON</button>
+<button id="btn9">underscoreJS</button>
+<button id="btn10"></button>
+<hr>
+<div id="here">여기</div>
+</body>
+</html>

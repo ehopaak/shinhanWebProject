@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+	<style>
+		body{
+			font-size:9pt;
+		
+		}
+		
+		div{
+			border: 1px solid #999999;
+			margin:20px;
+			margin-bottom:20px;
+		}
+		div div{
+			border: 1px dotted #CCC;
+			font-size:20px;	
+		}
+		
+		#panel {
+			width:600px;
+			overflow:visible;		
+		}
+		
+	</style>
+	<script>	
+	    var count=0;
+		window.onload=function(){
+			
+			setInterval(f,1000);
+			
+			function f(){
+				count++;
+				var span = document.createElement("span");
+			    var aa = "#" + (parseInt(Math.random() * 0xffffff)).toString(16); 
+			    var bb = 10 + parseInt(Math.random() * 40) + "px";
+				span.style.color = aa;		//random
+				span.style.fontSize = bb;	//10~50 random한 수 만들기
+				span.innerHTML = count;
+				
+				document.querySelector("#panel").appendChild(span);
+			}
+
+		}	
+	</script>
+</head>
+
+<body>
+	<div> 
+		<h4>미션2 - 1초에 하나씩 1부터 숫자를 증가시키며 #panel에 추가 시켜 주세요.<br> 단, 폰트 크기( 10px~ 50px)와 색은  랜덤으로 설정해주세요.</h4>
+		<div id="panel">
+			<span style="color:#ff00ff;font-size:40px;">1</span>
+			<span style="color:#ff20ff;font-size:30px;">2</span>
+			<span style="color:#ff2000;font-size:10px;">3</span>
+		</div>
+	</div>
+</body>
+</html>

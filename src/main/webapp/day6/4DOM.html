@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "https://cdn.jsdelivr.net/npm/underscore@latest/underscore-umd-min.js">
+
+</script>
+<style>
+	button {
+		background-color: orange;
+	}
+</style>
+<script>
+ window.onload = function(){
+	 btn1.onclick = call;
+	 btn2.onclick = call2;
+	 btn3.onclick = call3;
+	 btn4.onclick = call4;
+	 btn5.onclick = call5;
+	 btn6.onclick = call6;
+	 btn7.onclick = call7;
+	 
+ };
+
+function call(){
+	var elementNode = document.createElement("h1"); //<h1></h1>
+	var textNode = document.createTextNode("DOM연습"); //DOM연습
+	elementNode.appendChild(textNode); //<h1> DOM연습</h1>
+	var here = document.getElementById("here");//<div id="here"></div>
+	here.appendChild(elementNode);
+}
+	 
+function call2(){
+	var here = document.getElementById("here");
+	here.innerHTML += "<h1>DOM연습</h1>";
+	
+}
+
+function call3(){
+	var elementNode = document.createElement("img"); //<img>
+	var imgName = "../html5-css3-master/01/images/watch.jpg";
+	elementNode.src = imgName;
+	
+	elementNode.setAttribute("first-Name2", "스티븐");
+	var here = document.getElementById("here");//<div id="here"><img></div>
+	here.appendChild(elementNode);
+	here.innerHTML += `<img first="스티븐" src='${imgName}'>`;
+}
+function call4(){
+	var buttons = document.getElementsByTagName("button");
+	for(let i=0;i<buttons.length;i++){
+		buttons[i].innerHTML += "<br>" + buttons[i].innerHTML;
+		var data = buttons[i].getAttribute("data-id");
+		here.innerHTML += "<br>" + data;
+		
+		buttons[i].style.color = "red";
+		//buttons[i].style.backgroundColor = "orange";
+		buttons[i].style.padding = "15px";
+		buttons[i].style["backgroundColor"];
+	}
+}
+function call5(){
+	var fruits = document.getElementsByName("fruit");
+	for(let i=0;i<fruits.length;i++){
+		var val = fruits[i].value;
+		var chk = fruits[i].checked;
+		console.log(val, chk);
+		
+	}
+}
+function call6(){
+	var fruits = document.querySelectorAll('input[name="fruit"]:checked');
+	for(let i=0;i<fruits.length;i++){
+		var val = fruits[i].value;
+		console.log(val);
+	}
+}
+function call7(){
+	var here = document.getElementById("here");
+	here.parentNode.removeChild(here);
+}
+function call8(){
+	
+}
+function call9(){
+	
+}
+function call10(){}
+
+</script>
+</head>
+
+<body>
+<h1>DOM(Document Object Model)에 대하여~~</h1>
+<button id="btn1" data-id="100">노드생성</button>
+<button id="btn2" data-id="200">innerHTML</button>
+<button id="btn3" data-id="300">이미지(속성변경)</button>
+<button id="btn4" data-id="400">getElementByTagName</button>
+<button id="btn5" data-id="500">history</button>
+<button id="btn6" data-id="600">querySelectAll</button>
+<button id="btn7" data-id="700">removeChild</button>
+
+<hr>
+<label></label><input type="checkbox" name = "fruit" value = "apple"><span>사과</span></label>
+<label></label><input type="checkbox" name = "fruit" value = "banana"><span>바나나</span></label>
+<label></label><input type="checkbox" name = "fruit" value = "orange"><span>오렌지</span></label>
+<div id="here">여기</div>
+</body>
+</html>
