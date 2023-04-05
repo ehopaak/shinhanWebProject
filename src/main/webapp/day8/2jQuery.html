@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 1. 웹사이트가 jQuery library를 가지고있는 경우 -->
+<!--<script src ="../js/jquery-3.6.4.min.js">  -->
+<!-- 2. CDN을 이용하는 방법 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+//문서가 load후에 function() 수행한다의 의미이다.
+
+$.noConflict();
+
+	jQuery(document).ready(function(){});
+	jQuery(function(){
+		jQuery("#btn1").click(function(){
+			jQuery("p:nth-of-type(2n+1)").css("background-color","pink");
+		});
+		jQuery("#btn2").click(function(){
+			jQuery("p").each(function(index, item){
+				jQuery(item).addClass("mystyle" + (index%2+1));	//121212
+			});
+		});
+		jQuery("#btn3").click(function(){
+			jQuery("p").removeClass("mystyle1");
+			jQuery("p").removeClass("mystyle2");
+		});
+		jQuery("#btn4").click(function(){
+			var obj = {};
+			obj.myname = "홍길동";
+			obj.age = 20;
+			var obj2 = {"address":"서울시 마포구",phone:"010-6565-9999"};
+			jQuery.extend(obj, obj2, {major:"컴공"});
+			console.log(obj);
+			
+			var str="<ul>";
+			jQuery.each(obj,function(index, item){
+				str += `<li>${key}----${item}</li>`;
+			});
+			jQuery("#here").html(str);
+		});
+	});
+</script>
+<style>
+	/* p들중에 짝수번째 */
+	p:nth-of-type(2n){background-color:lightgreen;}
+	.mystyle1 {border:5px dotted blue;}
+	.mystyle2 {border:5px dotted red;}
+</style>
+
+
+</head>
+<body>
+	<h1>jQuery연습2</h1>
+	<button id="btn1">홀수찾기</button>
+	<button id="btn2">addClass</button>
+	<button id="btn3">removeClass</button>
+	<button id="btn4">Object확장</button>
+	<p>p1</p>
+	<p>p2</p>
+	<p>p3</p>
+	<p>p4</p>
+	<p>p5</p>
+	<div id = "here">여기</div>
+</body>
+</html>

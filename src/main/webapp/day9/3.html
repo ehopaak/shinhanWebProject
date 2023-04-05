@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0404 - 3</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style>
+	span {
+		width: 150px;
+	}
+</style>
+<script>
+	$(()=> {
+		
+		
+		$("#btn2").on("click", ()=>{
+			// 위 $.get() 호출 결과에 따라 'response' 또는 'Error' 출력
+			getData().then(function(data) {
+				console.log(data); // response 값 출력
+			}).catch(function(err) {
+				console.error(err); // Error 출력
+			});
+			function getData() {
+				return new Promise(function(resolve, reject) {
+					$.get('job.jsp', function(response) {
+						if (response) {
+							resolve(response);
+							//Fulfilled(이행) : 비동기 처리가 완료되어 프로미스가 결과 값을 반환해준 상태
+						}
+					reject(new Error("Request is failed"));
+					//Rejected(실패) : 비동기 처리가 실패하거나 오류가 발생한 상태
+					});
+				});
+			}
+		});
+		
+		$('#btn1').on('click', ()=>{
+			$.ajax({
+				url:'job.jsp',
+				data:{'job_id': $('#job_id').val(),
+					'job_title': $('#job_title').val(),
+					'max_salary': $('#max_salary').val(),
+					'min_salary': $('#min_salary').val() },
+				method:'post',
+				success:(result,status,xhr)=>{
+					$('#here').html(result);
+				},
+				error:()=>{}
+			});
+		});
+		
+		$('#btn3').on('click', ()=>{
+			var param = $('form').serialize(); // ?key=value&keyvalue
+			// form의 input들의 name과 value로 name=value형태로 문자열이 만들어짐 
+			console.log(param);
+			$.get('job.jsp?'+param, (result)=>{
+				$('#here').html(result);
+			});
+		});
+		
+		$('#btn4').on('click', ()=>{
+			var param = $('form').serializeArray(); 
+			console.log(param);
+			// serializeArray()의 결과로 data를 만들어보세요~
+			/*
+		    {
+		        "name": "job_id",
+		        "value": "qwe"
+		    },
+		    {
+		        "name": "job_title",
+		        "value": "qwe"
+		    },
+		    {
+		        "name": "max_salary",
+		        "value": "123"
+		    },
+		    {
+		        "name": "min_salary",
+		        "value": "123"
+		    }
+			*/
+			
+			var data = {};
+			$.each(param, function(idx, item) {
+				console.log(item.name);
+				console.log(item.value);
+				data[item.name] = item.value;
+			})
+			console.log(data);
+			
+			$.get('job.jsp', data, (result) => {
+				$('#here').html(result);
+			});
+		});
+		
+		
+	});
+</script>
+</head>
+<body>
+	<h1>jQuery 연습</h1>
+	<button id="btn2">promise 연습</button>
+	<button id="btn3">get</button>
+	<button id="btn4">post</button>
+	<hr>
+	<form>
+		<label>job id: <input type="text" id="job_id" name="job_id" value=""></label>
+		<label>job title: <input type="text" id="job_title" name="job_title" value=""></label><br>
+		<label>max salary: <input type="number" id="max_salary" name="max_salary" value=""></label>
+		<label>min salary: <input type="number" id="min_salary" name="min_salary" value=""></label><br>
+		<input id="btn1" type="button" value="서버로 전송">
+	</form>
+	<hr>
+	<div id="here">여기</div>
+	
+</body>
+</html>

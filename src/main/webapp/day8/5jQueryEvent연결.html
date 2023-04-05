@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.4.min.js"></script>
+<style>
+.enter{background-color: orange; color: blue;}
+.leave{background-color: pink; color: red;}
+
+</style>
+<script>
+$(function(){
+	//on() : 이벤트와 이벤트핸들러를 연결
+	$("h1").on("mouseenter", function(){
+		
+		$(this).removeClass("leave");
+		$(this).addClass("enter");
+	});
+	$("h1").on("mouseleave", function(){
+		$(this).removeClass("enter");
+		$(this).addClass("leave");
+	});
+	
+	var obj = {};
+	obj.mouseenter = function(){
+		$(this).removeClass("leave");
+		$(this).addClass("enter");
+	};
+	obj.mouseleave = function(){
+		$(this).removeClass("enter");
+		$(this).addClass("leave");
+	};
+	$("h1").on(obj);
+	
+	$("div").on("click", function(){
+		//var h = $(this).find("h1").text();
+		//var p = $(this).find("p").text();
+		
+		//this는 context이다. selector가 적용하는 범위이다.
+		var h = $("h1",this).text();
+		var h = $("p",this).text();
+		alert(h + "---" + p);
+	});
+	
+	
+	
+});
+</script>
+<style>
+	div{ border : 1px solid green; padding:20px;}
+</style>
+</head>
+<body>
+<h1>jQuery Event 연습</h1>
+<div>
+	<h1>jQuery Event 연습</h1>
+	<p onclick="alert('ppppp');">현재객체</p>
+</div>
+<form id="frm" action="1.jsp" onsubmit="return call();">
+	아이디: <input type = "text" name="userid">
+	비밀번호: <input type = "passoword" name="userpass">
+	 <input type = "submit" value="서버로전송">
+</form>
+<hr>
+<button id="btn1">버튼1</button>
+<button id="btn2">버튼2</button>
+<hr>
+<input type="checkbox" id="all-check"/>
+<label>All</label>
+<div id="check-item">
+	<input type= "checkbox"/>
+	<label>A option</label>
+	<input type= "checkbox"/>
+	<label>B option</label>
+	<input type= "checkbox"/>
+	<label>C option</label>
+</div>
+
+
+
+<script>
+	$(function(){
+		
+		$("#all-check").change(function(){
+			if(this.checked){
+				$("#check-item").children().prop("checked",true);
+			} else {
+				$("#check-item").children().prop("checked",false);
+			}
+		});
+		
+		
+		$("#btn1").click(function(){
+			alert("btn1을 누름");
+		});
+		$("#btn2").click(function(){
+			$("#btn2").trigger("click");
+		});
+		
+	});
+
+
+	$(function(){
+		
+		$("p").on("click", function(event){
+			alert("P!!!!!");
+			console.log(event.pageX, event.pageY);
+			event.stopPropagation();	//이벤트 전달막기(캡처링, 버블링 취소)
+		})
+		
+		$("frm").on("submit", function(event){
+		var id = $("input[name='userid']").val();	
+		var pw = $("input[name='userpass']").val();	
+		alert(id + ":" + pw);
+		if(id.length<5)
+			$(event).preventDefault();
+			//default event제거
+		});
+	});
+
+
+/* frm.onsubmit = function(){
+	var id = $("input[name='userid']").val();	
+	var pw = $("input[name='userpass']").val();	
+	alert(id + ":" + pw);
+} */
+
+	//onsubmit return false
+	function call(){
+		var id = $("input[name='userid']").val();	
+		var pw = $("input[name='userpass']").val();	
+		alert(id + ":" + pw);
+		if(id.length < 5) return false;
+	}
+
+</script>
+</body>
+</html>

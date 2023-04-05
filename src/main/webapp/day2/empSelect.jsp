@@ -36,8 +36,22 @@ $(function(){
     });
 	
 });
+var str="";
+var arr=["IT_PROG","AD_VP","AD_PRES","ST_MAN","ST_CLERK"];
+$.each(arr, function(index, item){
+	//str += `<option>${item}</option>`;
+	str += "<option>" + item + "</option>";
+});
 
-#container > table > tbody > tr:nth-child(1) > td:nth-child(5)
+$("#jobs").html(str);
+console.log(str);
+
+$("select").change(function(){
+	var jobid = $(this).val();
+	//init();
+	$("tr td").css("color","black");
+	$("tr td:contains('" + jobid + "')").css("color", "red");
+	});
 
 </script>
 <style>
@@ -82,6 +96,12 @@ $(function(){
 	<button id="btn1">짝수row선택</button>
 	<button id="btn2">이름 S로 시작하는 직원</button>
 	<button id="btn3">급여가 10000 이상인 직원</button>
+	<select id="jobs">
+		<!-- <option value="IT_PROG">IT_PROG</option>
+		<option>AD_VP</option>
+		<option>PU_CLERK</option>
+		<option>ST_MAN</option> -->
+	</select>
 	
 	
 	

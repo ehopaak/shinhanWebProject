@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.4.min.js"></script>
+<style>
+#here div{border : 1px solid red;}
+img {width: 300px; height: 300px;}
+</style>
+<script>
+$(function(){
+	
+	$("#btn8").click(function(){
+		
+		setInterval(function(){
+			$("#mypicture img").first().appendTo($("#mypicture img"));
+		});
+		
+	});
+	
+	
+	$("#btn7").click(function(){
+		var arr = [];
+		arr.push({name:"은정", address:"홍대입구"});
+		arr.push({name:"유진", address:"강남"});
+		arr.push({name:"지만", address:"홍대입구"});
+		arr.push({name:"진경", address:"신림"});
+		arr.push({name:"손님", address:"망원"});
+		
+		for(let i=0;i<arr.length;i++){
+			$("#here").append("<div></div>");
+		}
+		$("#here div").append(function(index){
+			//console.log(index);
+			$(this).append(`<h1>${arr[index].name}</h1>`);
+			$(this).append(`<h2>${arr[index].address}</h2>`);
+		});
+	});
+	
+	
+	$("#btn6").click(function(){
+		
+		$("<h1>빨리점심!!!</h1>>").appendTo("#here");
+		$("<h1>오후시작!!!</h1>>").prependTo("#here");
+		$("<h1>박성진!!!</h1>>").insertBefore("#here");
+		$("<h1>박성진2!!!</h1>>").insertAfter("#here");
+		
+		$("#here").append("<h2>영선1</h2>");
+		$("#here").prepend("<h2>영선2</h2>");
+		$("#here").before("<h2>영선3</h2>");
+		$("#here").after("<h2>영선4</h2>");
+	});
+	
+	
+	$("#btn5").click(function(){
+		//$("#here").remove();	//객체자체지우기
+		$("#here").empty();	//내용만지우기
+	});
+	
+	
+	$("#btn4").click(function(){
+		var str = "<ul>";
+		$("img").each(function(index,item){
+			var src = $(item).attr("src");
+			str += `<li>$(item).attr("src")</li>`;
+		});	
+		$("#here").html(str + "</ul>");		
+		//html() : html태그인식 
+		//text() : html태그도 text취급, 단순 문자열일때 사용한다.
+	});
+	
+	
+	$("#btn3").click(function(){
+		var arr = ["red","blue","green","purple","pink"];
+		$("img").css("border", function(index, item){
+			console.log(index);
+			return "3px solid " + arr[index];
+		});		
+	});
+	
+	
+	$("#btn2").click(function(){
+		$("img").removeAttr("width");
+		$("img").removeAttr("height");
+	});
+	
+	
+	var obj = {name:"홍", age:20, test: true, f:function(){}};
+	
+	$("#btn1").click(function(){
+		$("img").attr("border", "1px solid gray");
+		var obj = {
+				width : function(index) { 
+				
+					return (index+1)*200; },
+				height:200};
+		$("img").attr(obj);
+		
+	});
+});
+</script>
+</head>
+<body>
+<h1>jQuery...문서객체(DOM)를 추가,수정</h1>
+<button id="btn1">속성추가</button>
+<button id="btn2">속성제거</button>
+<button id="btn3">css</button>
+<button id="btn4">html,text</button>
+<button id="btn5">remove, empty</button>
+<button id="btn6">객체생성</button>
+<button id="btn7">객체생성</button>
+<button id="btn8">객체이동</button>
+<br>
+<div style = "border:5px dotted green; "id="here">여기</div>
+<div id="mypicture">
+	<img src="../html5-css3-master/03/images/umbrella.jpg"/>
+	<img src="../html5-css3-master/03/images/fantasy.jpg"/>
+	<img src="../html5-css3-master/03/images/muffin.png"/>
+	<img src="../html5-css3-master/03/images/automobile.svg"/>
+	<img src="../html5-css3-master/03/images/kids.jpg"/>
+</div>
+</body>
+</html>

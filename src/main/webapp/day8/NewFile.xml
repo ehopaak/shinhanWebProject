@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<friends>
+	<friend>
+		<name>찬혁</name>
+		<major>컴공</major>
+	</friend>
+	<friend>
+		<name>택주</name>
+		<major>경제</major>
+	</friend>
+	<friend>
+		<name>준법</name>
+		<major>영문</major>
+	</friend>
+</friends>
